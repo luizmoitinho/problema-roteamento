@@ -40,4 +40,4 @@ theGraph.addEdge(7, 7)
 theGraph.showAdjMat()
 
 
-    
+theGraph.bfs()

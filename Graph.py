@@ -42,5 +42,22 @@ class Graph:
         print(self.adjMat[i][j],end=" ")
       print("")
   
-  
+  def bfs(self):
+    initialState = 0;
+    print("Estado inicial é %c" %(self.vertexList[initialState].label))
+    self.vertexList[initialState].wasVisited = True
+    self.displayVertice(initialState)
+    self.queue.insert(initialState)
+
+    v2 = 0
+    while(not self.queue.isEmpty()):
+      v1 = self.queue.remove()
+      v2 = self.getAdjUnvisitedVertex(v1)
+      while(v2 != -1):
+        self.vertexList[v2].wasVisited = True
+        self.displayVertice(v2)
+        self.queue.insert(v2)
+
+        v2 = self.getAdjUnvisitedVertex(v1)
+
   pass
