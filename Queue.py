@@ -2,17 +2,17 @@
 class Queue:
   
   def __init__(self):
-    self.SIZE = 8
+    self.SIZE = 7
     self.queueArray = [self.SIZE]
     self.front = 0
     self.rear = -1
 
 
   def insert(self, element):
-    if(rear ==  self.SIZE-1):
-      rear = -1
+    if(self.rear ==  self.SIZE-1):
+      self.rear = -1
     self.rear =  self.rear + 1
-    self.queueArray[self.rear] = element
+    self.queueArray.append(element)
   
   def remove(self):
     temp = self.queueArray[self.front]
