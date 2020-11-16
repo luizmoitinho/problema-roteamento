@@ -7,7 +7,6 @@ class Queue:
     self.front = 0
     self.rear = -1
 
-
   def insert(self, element):
     if(self.rear ==  self.SIZE-1):
       self.rear = -1

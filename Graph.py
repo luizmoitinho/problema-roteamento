@@ -10,6 +10,7 @@ class Graph:
     self.MAX_VERTS = 8
     self.vertexList =  []
     self.adjMat = numpy.zeros((self.MAX_VERTS,self.MAX_VERTS), dtype = numpy.int64)
+    self.costs = numpy.zeros((self.MAX_VERTS,self.MAX_VERTS), dtype = numpy.int64)
     self.nVerts = 0  
     self.queue = Queue()
 
@@ -17,9 +18,13 @@ class Graph:
     self.vertexList.append(Vertex(label))
     self.nVerts = self.nVerts + 1
 
-  def addEdge(self, start,end):
+  def addEdge(self, start,end,cost,digrafo = None):
     self.adjMat[start][end] = 1
-    self.adjMat[end][start] = 1
+    self.costs[start][end] = cost
+
+    if(digrafo != None):
+      self.adjMat[end][start] = 1
+      self.costs[end][start] = coat
     
   def displayVertice(self,v):
     print(self.vertexList[v].label)
@@ -32,14 +37,14 @@ class Graph:
     return -1
 
   def showAdjMat(self):
-    print(end="   ")
+
     for i in range(self.MAX_VERTS):
-      print(i,end=" ")
+      print("%10d"%(i),end="")
     print("")
     for i in range(self.MAX_VERTS):
-      print(i,end="  ")
+      print(i,end="    ")
       for j in range(self.MAX_VERTS):
-        print(self.adjMat[i][j],end=" ")
+        print("[%2d,%2d]"%(self.adjMat[i][j],self.costs[i][j]),end="   ")
       print("")
   
   def bfs(self):
