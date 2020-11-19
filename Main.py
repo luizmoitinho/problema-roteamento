@@ -25,6 +25,5 @@ theGraph.addEdge(4, 3, 13)
 theGraph.addEdge(4, 6, 29)
 theGraph.addEdge(4, 5, 9)
 
-
 #theGraph.getAdjUnvisitedVertex(0)
 theGraph.ucs(0, 6)
