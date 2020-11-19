@@ -45,7 +45,6 @@ class Graph:
     initialState = nodeStart
     path = []
     self.vertexList[initialState].wasVisited = True
-    self.displayVertice(initialState)
    
     for i in self.vertexList[initialState].edges:
       self.queue.insert((i[0], i[1]), i[1])
@@ -60,14 +59,14 @@ class Graph:
         break
       else:
         currentNode, nodeWeight = self.queue.remove()
-        self.displayVertice(currentNode)
+
         self.vertexList[currentNode].wasVisited = True
         for i in self.vertexList[currentNode].edges:
           if(not self.vertexList[i[0]].wasVisited):
             cumulativeCost = i[1] + nodeWeight
             self.queue.insert((i[0], cumulativeCost), cumulativeCost)
-    #print(cumulativeWeight)
-    print(path)
+
+    return path
   pass
 
 
