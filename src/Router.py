@@ -33,12 +33,12 @@ class Router:
 
   def searchPath(self,initialAccess,node):
     path = []
-    path.append(node)
+    path.insert(0,node)
     nodeFather = self.getFather(node) 
     while( nodeFather != initialAccess and self.vertexList[nodeFather].wasVisited):
-      path.append(nodeFather)
+      path.insert(0,nodeFather)
       nodeFather = self.getFather(nodeFather)
-    path.append(nodeFather)
+    path.insert(0,nodeFather)
     return path
 
   def ucs(self, nodeStart, nodeGoal):
