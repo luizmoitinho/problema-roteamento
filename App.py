@@ -4,7 +4,7 @@ from src.Router import Router
 import time
 # import .Main
 
-COLOR_LINE = 'RED'
+COLOR_LINE = 'black'
 COLOR_CIRCLE = 'BLACK'
 
 
@@ -39,6 +39,8 @@ class App:
 
         self.lineList   = self.prepare_lines()
         self.circleList = self.prepare_circles()
+        self.prepare_labels()
+        self.prepare_weight()
 
         self.babel = {
             'A': 0,
@@ -71,17 +73,42 @@ class App:
         lineList['DG'] =  self.graph.DrawLine((300,120), (500,140), width=2, color=COLOR_LINE)   # 0
         return lineList
 
+    def prepare_weight(self):
+        self.graph.DrawText(text= '14', location=(150,400), color="black", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= '12', location=(100,268), color="black", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= '7',  location=(330,390), color="black", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= '24', location=(240,270), color="black", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= '9',  location=(180,310), color="black", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= '38', location=(230,140), color="black", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= '13', location=(340,250), color="black", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= '29', location=(430,230), color="black", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= '9',  location=(405,115), color="black", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= '9',  location=(475,343), color="black", font=16, angle=0, text_location="center")
+     
+
     def prepare_circles(self):
         circleList = {}
-        circleList['A'] =  self.graph.DrawCircle((75,340), 25,  fill_color = COLOR_CIRCLE, line_color='white')  # 0
-        circleList['B'] =  self.graph.DrawCircle((160,200), 25, fill_color = COLOR_CIRCLE, line_color='white')  # 1
-        circleList['C'] =  self.graph.DrawCircle((225,425), 25, fill_color = COLOR_CIRCLE, line_color='white')  # 2
-        circleList['D'] =  self.graph.DrawCircle((300,120), 25, fill_color = COLOR_CIRCLE, line_color='white')  # 3
-        circleList['E'] =  self.graph.DrawCircle((400,330), 25, fill_color = COLOR_CIRCLE, line_color='white')  # 4 
-        circleList['F'] =  self.graph.DrawCircle((550,320), 25, fill_color = COLOR_CIRCLE, line_color='white')  # 5 
-        circleList['G'] =  self.graph.DrawCircle((500,140), 25, fill_color = COLOR_CIRCLE, line_color='white')  # 6 
+        circleList['A'] =  self.graph.DrawImage(filename="computer.png", location=(50,365))   # 0
+        circleList['B'] =  self.graph.DrawImage(filename="computer.png", location=(135,225))  # 1
+        circleList['C'] =  self.graph.DrawImage(filename="computer.png", location=(200,450))  # 2
+        circleList['D'] =  self.graph.DrawImage(filename="computer.png", location=(275,145))  # 3
+        circleList['E'] =  self.graph.DrawImage(filename="computer.png", location=(375,355))  # 4 
+        circleList['F'] =  self.graph.DrawImage(filename="computer.png", location=(525,345))  # 5 
+        circleList['G'] =  self.graph.DrawImage(filename="computer.png", location=(475,165))  # 6 
         return circleList
     
+    def prepare_labels(self):
+        self.graph.DrawText(text= 'A', location=(70,345),   color="white", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= 'B', location=(155,205),  color="white", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= 'C', location=(220,430),  color="white", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= 'D', location=(295, 125), color="white", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= 'E', location=(395, 335), color="white", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= 'F', location=(545, 325), color="white", font=16, angle=0, text_location="center")
+        self.graph.DrawText(text= 'G', location=(495, 145), color="white", font=16, angle=0, text_location="center")
+
+
+       
+
     def prepare_graph(self):
         self.theGraph.addAccess('A') # 0
         self.theGraph.addAccess('B') # 1
