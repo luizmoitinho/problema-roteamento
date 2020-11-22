@@ -1,6 +1,6 @@
 import numpy
-from src.Queue import Queue
-from src.Vertex import Vertex
+from .Queue import Queue
+from .Vertex import Vertex
 
 class Router:
 
@@ -53,13 +53,12 @@ class Router:
     cumulativeWeight = -1
     currentNode = initialState
     while(not self.queue.isEmpty()):
+      currentNode, nodeWeight = self.queue.remove()
       if(currentNode == nodeGoal):
         cumulativeWeight = nodeWeight
         path =  self.searchPath(initialState,currentNode)
         break
       else:
-        currentNode, nodeWeight = self.queue.remove()
-
         self.vertexList[currentNode].wasVisited = True
         for i in self.vertexList[currentNode].edges:
           if(not self.vertexList[i[0]].wasVisited):

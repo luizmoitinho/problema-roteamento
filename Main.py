@@ -1,5 +1,5 @@
-
 from src.Router import Router
+from App import App
 
 theGraph = Router()
 
@@ -27,4 +27,7 @@ theGraph.addLink(4, 6, 29)
 theGraph.addLink(4, 5, 9)
 
 #theGraph.getAdjUnvisitedVertex(0)
-print(theGraph.ucs(0, 5))
+print(theGraph.ucs(0, 6))
+
+app = App()
+app.run()
