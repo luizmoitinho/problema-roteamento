@@ -3,4 +3,4 @@ from App import App
 
 
 app = App()
-app.ucs(0,3)
+app.ucs(5,6)

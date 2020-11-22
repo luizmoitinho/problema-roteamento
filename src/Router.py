@@ -28,49 +28,28 @@ class Router:
   def displayVertice(self,v):
     print(self.vertexList[v].label,end=" ")
 
-  def searchPath(self,initialAccess,node):
-    path = []
-  
-    path.insert(0,node)
-    nodeFather = self.vertexList[node].parent
-
-    while( nodeFather != -1 and self.vertexList[nodeFather].wasVisited):
-
-      path.insert(0,nodeFather)
-      nodeFather =  self.vertexList[nodeFather].parent
-      
-    path.insert(0,nodeFather)
-
-    return path
-
   def ucs(self, nodeStart, nodeGoal):
     initialState = nodeStart
-    path = []
-    theStack = []
     self.vertexList[initialState].wasVisited = True
     for i in self.vertexList[initialState].edges:
-      self.queue.insert((i[0], i[1]), i[1])
+      self.queue.insert((i[0], i[1], [nodeStart]), i[1])
       self.vertexList[i[0]].parent = initialState
-          
-    reachedGoal = False
     cumulativeWeight = -1
 
     while(not self.queue.isEmpty()):
-      currentNode, nodeWeight = self.queue.remove()
-      theStack.insert(0,[currentNode,self.vertexList[currentNode].parent])
+      currentNode, nodeWeight, path = self.queue.remove()
       print(self.vertexList[currentNode].label, nodeWeight)
       if(currentNode == nodeGoal):
-        print(theStack)  
+        path = path + [currentNode]
         cumulativeWeight = nodeWeight
-        # path = self.searchPath(initialState,currentNode)
-        break
+        return path, cumulativeWeight
       else:
         self.vertexList[currentNode].wasVisited = True
         for i in self.vertexList[currentNode].edges:
           if(not self.vertexList[i[0]].wasVisited):
             self.vertexList[i[0]].parent = currentNode
             cumulativeCost = i[1] + nodeWeight
-            self.queue.insert((i[0], cumulativeCost), cumulativeCost)
+            self.queue.insert((i[0], cumulativeCost, path + [currentNode]), cumulativeCost)
 
         
     for i in self.vertexList:
