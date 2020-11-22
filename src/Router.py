@@ -29,18 +29,21 @@ class Router:
     print(self.vertexList[v].label,end=" ")
 
   def ucs(self, nodeStart, nodeGoal):
+    for i in self.vertexList:
+      i.wasVisited = False
+    self.queue.flush()
+
     initialState = nodeStart
     self.vertexList[initialState].wasVisited = True
     for i in self.vertexList[initialState].edges:
-      self.queue.insert((i[0], i[1], [nodeStart]), i[1])
+      self.queue.insert((i[0], i[1], [self.vertexList[nodeStart].label]), i[1])
       self.vertexList[i[0]].parent = initialState
     cumulativeWeight = -1
 
     while(not self.queue.isEmpty()):
       currentNode, nodeWeight, path = self.queue.remove()
-      print(self.vertexList[currentNode].label, nodeWeight)
       if(currentNode == nodeGoal):
-        path = path + [currentNode]
+        path = path + [self.vertexList[currentNode].label]
         cumulativeWeight = nodeWeight
         return path, cumulativeWeight
       else:
@@ -49,13 +52,10 @@ class Router:
           if(not self.vertexList[i[0]].wasVisited):
             self.vertexList[i[0]].parent = currentNode
             cumulativeCost = i[1] + nodeWeight
-            self.queue.insert((i[0], cumulativeCost, path + [currentNode]), cumulativeCost)
+            self.queue.insert((i[0], cumulativeCost, path + [self.vertexList[currentNode].label]), cumulativeCost)
 
-        
-    for i in self.vertexList:
-      i.wasVisited = False
-    self.queue.flush()
-    return path
+    
+    return path, cumulativeWeight
   pass
 
 
