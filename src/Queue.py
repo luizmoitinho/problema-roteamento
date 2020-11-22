@@ -14,6 +14,9 @@ class Queue:
 
   def isEmpty(self):
     return len(self.queueArray) == 0
+
+  def flush(self):
+    self.queueArray = []
   
   def print(self):
     print(self.queueArray)

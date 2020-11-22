@@ -18,9 +18,6 @@ class Router:
     self.vertexList[startAccess].edges.append([endAccess, weight])
     self.vertexList[endAccess].edges.append([startAccess, weight])
 
-  def getFather(self, v):
-    return self.vertexList[v].edges[0][0]
-  
   def displayLinks(self): 
     for i in self.vertexList:
       print("Vertices de", i.label)
@@ -33,40 +30,57 @@ class Router:
 
   def searchPath(self,initialAccess,node):
     path = []
+  
     path.insert(0,node)
-    nodeFather = self.getFather(node) 
-    while( nodeFather != initialAccess and self.vertexList[nodeFather].wasVisited):
+    nodeFather = self.vertexList[node].parent
+
+    while( nodeFather != -1 and self.vertexList[nodeFather].wasVisited):
+
       path.insert(0,nodeFather)
-      nodeFather = self.getFather(nodeFather)
+      nodeFather =  self.vertexList[nodeFather].parent
+      
     path.insert(0,nodeFather)
+
     return path
 
   def ucs(self, nodeStart, nodeGoal):
     initialState = nodeStart
     path = []
+    theStack = []
     self.vertexList[initialState].wasVisited = True
-   
     for i in self.vertexList[initialState].edges:
       self.queue.insert((i[0], i[1]), i[1])
-
+      self.vertexList[i[0]].parent = initialState
+          
     reachedGoal = False
     cumulativeWeight = -1
-    currentNode = initialState
+
     while(not self.queue.isEmpty()):
       currentNode, nodeWeight = self.queue.remove()
+      theStack.insert(0,[currentNode,self.vertexList[currentNode].parent])
+      print(self.vertexList[currentNode].label, nodeWeight)
       if(currentNode == nodeGoal):
+        print(theStack)  
         cumulativeWeight = nodeWeight
-        path =  self.searchPath(initialState,currentNode)
+        # path = self.searchPath(initialState,currentNode)
         break
       else:
         self.vertexList[currentNode].wasVisited = True
         for i in self.vertexList[currentNode].edges:
           if(not self.vertexList[i[0]].wasVisited):
+            self.vertexList[i[0]].parent = currentNode
             cumulativeCost = i[1] + nodeWeight
             self.queue.insert((i[0], cumulativeCost), cumulativeCost)
 
+        
+    for i in self.vertexList:
+      i.wasVisited = False
+    self.queue.flush()
     return path
   pass
 
+
+
+    
 
 
