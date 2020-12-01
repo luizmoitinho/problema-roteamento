@@ -1,4 +1,4 @@
-import numpy
+
 from .Queue import Queue
 from .Vertex import Vertex
 
