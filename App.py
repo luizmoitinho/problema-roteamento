@@ -151,6 +151,7 @@ class App:
                     sg.popup_ok('Estado(s) informado(s) não existe(m)', title="Erro",auto_close=False) 
                     continue
                 elif self.start == self.end:
+                    self.window['weight'].update("Custo Total: 0")
                     continue
                 result = self.theGraph.ucs(self.babel[self.start],self.babel[self.end])
                 if(len(result) > 0):
