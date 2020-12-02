@@ -5,4 +5,3 @@ class Vertex:
     self.label = label
     self.edges = []
     self.wasVisited = False
-    self.parent = -1

@@ -2,11 +2,9 @@ import PySimpleGUI as sg
 from src.Router import Router
 
 import time
-# import .Main
 
 COLOR_LINE = 'black'
 COLOR_CIRCLE = 'BLACK'
-
 
 class App:
 
@@ -36,7 +34,6 @@ class App:
         self.theGraph = Router()
         self.prepare_graph()
     
-
         self.window = sg.Window('Simulação de Rede', self.layout)
         self.window.Finalize()
         self.graph = self.window.Element('graph')
@@ -110,9 +107,6 @@ class App:
         self.graph.DrawText(text= 'F', location=(545, 325), color="white", font=16, angle=0, text_location="center")
         self.graph.DrawText(text= 'G', location=(495, 145), color="white", font=16, angle=0, text_location="center")
 
-
-       
-
     def prepare_graph(self):
         self.theGraph.addAccess('A') # 0
         self.theGraph.addAccess('B') # 1
@@ -166,9 +160,6 @@ class App:
                         self.graph.TKCanvas.itemconfig(self.lineList[name], fill="green", width=4)  
                 
         self.window.close()
-     
-    def ucs(self, start, end):
-        self.theGraph.ucs(start, end)
 
     def clean_routes(self):
         for line in self.lineList:

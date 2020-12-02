@@ -4,7 +4,6 @@ class Queue:
   
   def __init__(self):
     self.queueArray = []
-    self.index = 0
 
   def insert(self, item, priority):
     heapq.heappush(self.queueArray, (priority, item))
