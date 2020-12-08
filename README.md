@@ -11,7 +11,9 @@ dentre os host presentes na aplicação, buscar a melhor rota a ser traçada com
 
 2. SimpleGUI
 >  pip install PySimpleGUI
+
 --
+
 ## Executando a aplicação
 1. Baixe o projeto do github (.zip ou clone)
 2. Acesse a pasta raiz do projeto
