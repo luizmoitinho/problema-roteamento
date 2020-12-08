@@ -2,18 +2,14 @@
 
 Projeto produzido utilizando Python para resolver o problema do roteamento, presente nas redes de computadores. Tem como objetivo, 
 dentre os host presentes na aplicação, buscar a melhor rota a ser traçada com base no seu custo (busca de custo uniforme).
-
 --
-
 ## Intalação de bibliotecas:
 1. Tkinter
 >  pip install tk-tools
 
 2. SimpleGUI
 >  pip install PySimpleGUI
-
 --
-
 ## Executando a aplicação
 1. Baixe o projeto do github (.zip ou clone)
 2. Acesse a pasta raiz do projeto
