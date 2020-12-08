@@ -18,7 +18,9 @@ dentre os host presentes na aplicação, buscar a melhor rota a ser traçada com
 3. Execute o arquivo Main.py pelo terminal:
   > python(3) May.py
   > O número 3 refere-se a versão do python, pode variar a depender como se encontra o python em sua máquina.
+  
 3.1 Execute o terminal via VsCode:
+
   > Abra o projeto no VsCode e pressione o icone de start, presente no canto superior direito do editor.
  
 ## Aplicação
